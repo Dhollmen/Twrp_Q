@@ -2982,7 +2982,7 @@
 			</listbox>
 
 			<button style="main_button">
-				<condition var1="tw_app_install_status" var2="1"/>
+				<condition var1="tw_app_install_status" op="!=" var2="-1"/>
 				<placement x="%center_x%" y="%row12_y%"/>
 				<text>{@reboot_install_app_hdr=Install TWRP App}</text>
 				<actions>
@@ -3734,7 +3734,7 @@
 					</actions>
 				</listitem>
 				<listitem name="{@reboot_install_app_hdr=Install TWRP App}">
-					<condition var1="tw_app_install_status" var2="1"/>
+					<condition var1="tw_app_install_status" op="!=" var2="-1"/>
 					<actions>
 						<action function="set">tw_back=advanced</action>
 						<action function="set">tw_appinstall_title={@advanced_hdr=Advanced}</action>
@@ -3742,7 +3742,7 @@
 					</actions>
 				</listitem>
 				<listitem name="{@uninstall_twrp_system_app=Uninstall TWRP App from System}">
-					<condition var1="tw_app_installed_in_system" var2="1"/>
+					<condition var1="tw_app_installed_in_system" op="!=" var2="-1"/>
 					<actions>
 						<action function="set">tw_back=advanced</action>
 						<action function="set">tw_action=uninstalltwrpsystemapp</action>
