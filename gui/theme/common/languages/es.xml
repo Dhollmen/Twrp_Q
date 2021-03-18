@@ -666,7 +666,7 @@
 		<string name="theme_ver_err">El tema no coincide con la versión TWRP. Usando tema por defecto.</string>
 		<string name="up_a_level">(Subir un nivel)</string>
 		<string name="install_reboot" version="2">Reiniciando in %tw_sleep% segundo(s)</string>
-		<string name="backup_storage_undecrypt_warning">El backup no incluye algunos archivos del usuario {1} porque no está desencriptado.</string>
+		<string name="backup_storage_undecrypt_warning">El backup no incluirá algunos archivos del usuario {1} porque no está desencriptado.</string>
 		<string name="backup_storage_warning">El backup de {1} no incluye archivos del almacenamiento interno como imágenes o descargas.</string>
 		<string name="boot_slot_a">Slot A</string>
 		<string name="boot_slot_b">Slot B</string>
