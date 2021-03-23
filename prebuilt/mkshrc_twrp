@@ -1,21 +1,12 @@
-# Copyright (c) 2010, 2012, 2013, 2014
-#	Thorsten Glaser <tg@mirbsd.org>
-# This file is provided under the same terms as mksh.
-#-
 # Minimal /system/etc/mkshrc for Android
-#
-# Support: https://launchpad.net/mksh
+# Copyright (c) 2010, 2012, 2013, 2014 Thorsten Glaser <tg@mirbsd.org>
 
 : ${HOSTNAME:=$(getprop ro.product.device)}
-: ${HOSTNAME:=android}
 : ${TMPDIR:=/tmp}
-export HOSTNAME TMPDIR
+: ${USER:=$(typeset x=$(id); x=${x#*\(}; print -r -- ${x%%\)*})} [ $USER_ID = "0" ] && PS1='[root] $PWD: ' || PS1='user $PWD: '
+export HOSTNAME TMPDIR PS1 USER
 
-if (( USER_ID )); then PS1='$'; else PS1='#'; fi
-PS4='[$EPOCHREALTIME] '; PS1='${|
-	local e=$?
-
-	(( e )) && REPLY+="$e|"
-
-	return $e
-}$HOSTNAME:${PWD:-?} '"$PS1 "
+alias cd..='cd ..'
+alias la='ls -a'
+alias ll='ls -l'
+alias ls='ls -an'
