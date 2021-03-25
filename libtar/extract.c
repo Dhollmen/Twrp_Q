@@ -175,7 +175,7 @@ tar_extract_file(TAR *t, const char *realname, const char *prefix, const int *pr
 
 	if((t->options & TAR_STORE_POSIX_CAP) && t->th_buf.has_cap_data)
 	{
-#if 1 //def DEBUG
+#ifdef DEBUG
 		printf("tar_extract_file(): restoring posix capabilities to file %s\n", realname);
 		print_caps(&t->th_buf.cap_data);
 #endif
@@ -512,7 +512,7 @@ tar_extract_dir(TAR *t, const char *realname)
 			}
 			else
 			{
-#if 1 //def DEBUG
+#ifdef DEBUG
 				puts("  *** using existing directory");
 #endif
 				return 1;
@@ -530,7 +530,7 @@ tar_extract_dir(TAR *t, const char *realname)
 	if (t->options & TAR_STORE_ANDROID_USER_XATTR)
 	{
 		if (t->th_buf.has_user_default) {
-#if 1 //def DEBUG
+#ifdef DEBUG
 			printf("tar_extract_file(): restoring android user.default xattr to %s\n", realname);
 #endif
 			if (setxattr(realname, "user.default", NULL, 0, 0) < 0) {
@@ -539,14 +539,14 @@ tar_extract_dir(TAR *t, const char *realname)
 			}
 		}
 		if (t->th_buf.has_user_cache) {
-#if 1 //def DEBUG
+#ifdef DEBUG
 			printf("tar_extract_file(): restoring android user.inode_cache xattr to %s\n", realname);
 #endif
 			if (write_path_inode(realname, "cache", "user.inode_cache"))
 				return -1;
 		}
 		if (t->th_buf.has_user_code_cache) {
-#if 1 //def DEBUG
+#ifdef DEBUG
 			printf("tar_extract_file(): restoring android user.inode_code_cache xattr to %s\n", realname);
 #endif
 			if (write_path_inode(realname, "code_cache", "user.inode_code_cache"))

@@ -827,7 +827,7 @@ int PageSet::LoadLanguage(char* languageFile, ZipWrap* package)
 	int ret = 0;
 
 	if (languageFile) {
-		printf("parsing languageFile\n");
+		//printf("parsing languageFile\n");
 		lang.parse<0>(languageFile);
 		printf("parsing languageFile done\n");
 	} else {
@@ -1200,7 +1200,7 @@ char* PageManager::LoadFileToBuffer(std::string filename, ZipWrap* package) {
 
 	if (!package) {
 		// We can try to load the XML directly...
-		LOGINFO("PageManager::LoadFileToBuffer loading filename: '%s' directly\n", filename.c_str());
+		//LOGINFO("PageManager::LoadFileToBuffer loading filename: '%s' directly\n", filename.c_str());
 		struct stat st;
 		if (stat(filename.c_str(),&st) != 0) {
 			// This isn't always an error, sometimes we request files that don't exist.
@@ -1230,7 +1230,7 @@ char* PageManager::LoadFileToBuffer(std::string filename, ZipWrap* package) {
 		}
 		close(fd);
 	} else {
-		LOGINFO("PageManager::LoadFileToBuffer loading filename: '%s' from zip\n", filename.c_str());
+		//LOGINFO("PageManager::LoadFileToBuffer loading filename: '%s' from zip\n", filename.c_str());
 		if (!package->EntryExists(filename)) {
 			LOGERR("Unable to locate '%s' in zip file\n", filename.c_str());
 			return NULL;
@@ -1357,7 +1357,7 @@ int PageManager::LoadPackage(std::string name, std::string package, std::string 
 	LOGINFO("Loading package: %s (%s)\n", name.c_str(), package.c_str());
 	if (package.size() > 4 && package.substr(package.size() - 4) != ".zip")
 	{
-		LOGINFO("Load XML directly\n");
+		//LOGINFO("Load XML directly\n");
 		tw_x_offset = TW_X_OFFSET;
 		tw_y_offset = TW_Y_OFFSET;
 		tw_w_offset = TW_W_OFFSET;
@@ -1370,7 +1370,7 @@ int PageManager::LoadPackage(std::string name, std::string package, std::string 
 	}
 	else
 	{
-		LOGINFO("Loading zip theme\n");
+		//LOGINFO("Loading zip theme\n");
 		tw_x_offset = 0;
 		tw_y_offset = 0;
 		tw_w_offset = 0;

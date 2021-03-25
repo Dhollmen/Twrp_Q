@@ -123,7 +123,7 @@ tar_append_file(TAR *t, const char *realname, const char *savename)
 		if (lgetfilecon(realname, &selinux_context) >= 0)
 		{
 			t->th_buf.selinux_context = strdup(selinux_context);
-			printf("  ==> set selinux context: %s\n", selinux_context);
+			//printf("  ==> set selinux context: %s\n", selinux_context);
 			freecon(selinux_context);
 		}
 		else
@@ -223,7 +223,7 @@ tar_append_file(TAR *t, const char *realname, const char *savename)
 		if (getxattr(realname, XATTR_NAME_CAPS, &t->th_buf.cap_data, sizeof(struct vfs_cap_data)) >= 0)
 		{
 			t->th_buf.has_cap_data = 1;
-#if 1 //def DEBUG
+#ifdef DEBUG
 			print_caps(&t->th_buf.cap_data);
 #endif
 		}
@@ -235,14 +235,14 @@ tar_append_file(TAR *t, const char *realname, const char *savename)
 		if (getxattr(realname, "user.default", NULL, 0) >= 0)
 		{
 			t->th_buf.has_user_default = 1;
-#if 1 //def DEBUG
+#ifdef DEBUG
 			printf("storing xattr user.default\n");
 #endif
 		}
 		if (getxattr(realname, "user.inode_cache", NULL, 0) >= 0)
 		{
 			t->th_buf.has_user_cache = 1;
-#if 1 //def DEBUG
+#ifdef DEBUG
 			printf("storing xattr user.inode_cache\n");
 #endif
 		}

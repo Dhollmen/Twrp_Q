@@ -22,7 +22,7 @@ void startupArgs::parse(int *argc, char ***argv) {
 	std::vector<std::string> args = args::get_args(argc, argv);
 	int index;
 
-	LOGINFO("Startup Commands: ");
+	//LOGINFO("Startup Commands: ");
 	for (index = 1; index < args.size(); index++) {
 		if (args[index].find(RESCUE_PARTY) != std::string::npos) {
 		      gui_print("\n\n");
@@ -34,7 +34,7 @@ void startupArgs::parse(int *argc, char ***argv) {
 		      gui_msg(Msg(msg::kError, "rescue_party4=The reported problem is:"));
 		      gui_print_color("error", " '%s'\n\n", args[index+1].c_str());
 		} else
-		printf("'%s'", args[index].c_str());
+		//printf("'%s'", args[index].c_str());
 		if (args[index] == FASTBOOT) {
 			fastboot_mode = true;
 			android::base::SetProperty("sys.usb.config", "none");
@@ -75,7 +75,7 @@ void startupArgs::parse(int *argc, char ***argv) {
 				break;
 		}
 	}
-	printf("\n");
+	//printf("\n");
 }
 
 bool startupArgs::Should_Skip_Decryption() {

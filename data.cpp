@@ -804,7 +804,7 @@ void DataManager::SetDefaultValues()
 	string findbright;
 #ifdef TW_BRIGHTNESS_PATH
 	findbright = EXPAND(TW_BRIGHTNESS_PATH);
-	LOGINFO("TW_BRIGHTNESS_PATH := %s\n", findbright.c_str());
+	//LOGINFO("TW_BRIGHTNESS_PATH := %s\n", findbright.c_str());
 	if (!TWFunc::Path_Exists(findbright)) {
 		LOGINFO("Specified brightness file '%s' not found.\n", findbright.c_str());
 		findbright = "";
@@ -819,7 +819,7 @@ void DataManager::SetDefaultValues()
 		LOGINFO("Unable to locate brightness file\n");
 		mConst.SetValue("tw_has_brightnesss_file", "0");
 	} else {
-		LOGINFO("Found brightness file at '%s'\n", findbright.c_str());
+		//LOGINFO("Found brightness file at '%s'\n", findbright.c_str());
 		mConst.SetValue("tw_has_brightnesss_file", "1");
 		mConst.SetValue("tw_brightness_file", findbright);
 		string maxBrightness;

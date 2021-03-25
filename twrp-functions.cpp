@@ -1133,11 +1133,11 @@ int TWFunc::Set_Brightness(std::string brightness_value)
 	std::string secondary_brightness_file;
 
 	if (DataManager::GetIntValue("tw_has_brightnesss_file")) {
-		LOGINFO("TWFunc::Set_Brightness: Setting brightness control to %s\n", brightness_value.c_str());
+		//LOGINFO("TWFunc::Set_Brightness: Setting brightness control to %s\n", brightness_value.c_str());
 		result = TWFunc::write_to_file(DataManager::GetStrValue("tw_brightness_file"), brightness_value);
 		DataManager::GetValue("tw_secondary_brightness_file", secondary_brightness_file);
 		if (!secondary_brightness_file.empty()) {
-			LOGINFO("TWFunc::Set_Brightness: Setting secondary brightness control to %s\n", brightness_value.c_str());
+			//LOGINFO("TWFunc::Set_Brightness: Setting secondary brightness control to %s\n", brightness_value.c_str());
 			TWFunc::write_to_file(secondary_brightness_file, brightness_value);
 		}
 	}
@@ -1296,7 +1296,7 @@ void TWFunc::check_selinux_support() {
 }
 
 bool TWFunc::Is_TWRP_App_In_System() {
-	LOGINFO("checking for twrp app\n");
+	//LOGINFO("checking for twrp app\n");
 	TWPartition* sys = PartitionManager.Find_Partition_By_Path(PartitionManager.Get_Android_Root_Path());
 	if (!sys->Get_Super_Status()) {
 		bool is_system_mounted = true;
@@ -1364,7 +1364,7 @@ void TWFunc::checkforapp(){
 		DataManager::SetValue("tw_app_install_status", 2); // 0 = no status, 1 = not installed, 2 = already installed or do not install
 	}
 
-	LOGINFO("App not installed\n");
+	//LOGINFO("App not installed\n");
 	DataManager::SetValue("tw_app_install_status", 1); // 0 = no status, 1 = not installed, 2 = already installed
 exit:
 	return;

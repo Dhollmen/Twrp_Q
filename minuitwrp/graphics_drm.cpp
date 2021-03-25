@@ -146,23 +146,23 @@ static drm_surface *drm_create_surface(int width, int height) {
 #if defined(RECOVERY_ABGR)
     format = DRM_FORMAT_RGBA8888;
     base_format = GGL_PIXEL_FORMAT_RGBA_8888;
-    printf("setting DRM_FORMAT_RGBA8888 and GGL_PIXEL_FORMAT_RGBA_8888\n");
+    //printf("setting DRM_FORMAT_RGBA8888 and GGL_PIXEL_FORMAT_RGBA_8888\n");
 #elif defined(RECOVERY_BGRA)
     format = DRM_FORMAT_ARGB8888;
     base_format = GGL_PIXEL_FORMAT_RGBA_8888;
-    printf("setting DRM_FORMAT_ARGB8888 and GGL_PIXEL_FORMAT_RGBA_8888\n");
+    //printf("setting DRM_FORMAT_ARGB8888 and GGL_PIXEL_FORMAT_RGBA_8888\n");
 #elif defined(RECOVERY_RGBA)
     format = DRM_FORMAT_ABGR8888;
     base_format = GGL_PIXEL_FORMAT_BGRA_8888;
-    printf("setting DRM_FORMAT_ABGR8888 and GGL_PIXEL_FORMAT_BGRA_8888, GGL_PIXEL_FORMAT may not match!\n");
+    //printf("setting DRM_FORMAT_ABGR8888 and GGL_PIXEL_FORMAT_BGRA_8888, GGL_PIXEL_FORMAT may not match!\n");
 #elif defined(RECOVERY_RGBX)
     format = DRM_FORMAT_XBGR8888;
     base_format = GGL_PIXEL_FORMAT_RGBA_8888;
-    printf("setting DRM_FORMAT_XBGR8888 and GGL_PIXEL_FORMAT_RGBA_8888\n");
+    //printf("setting DRM_FORMAT_XBGR8888 and GGL_PIXEL_FORMAT_RGBA_8888\n");
 #else
     format = DRM_FORMAT_RGB565;
     base_format = GGL_PIXEL_FORMAT_BGRA_8888;
-    printf("setting DRM_FORMAT_RGB565 and GGL_PIXEL_FORMAT_RGB_565\n");
+    //printf("setting DRM_FORMAT_RGB565 and GGL_PIXEL_FORMAT_RGB_565\n");
 #endif
 
     memset(&create_dumb, 0, sizeof(create_dumb));

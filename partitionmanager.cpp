@@ -242,7 +242,7 @@ int TWPartitionManager::Process_Fstab(string Fstab_Filename, bool Display_Error)
 	fclose(fstabFile);
 
 	if (twrp_flags.size() > 0) {
-		LOGINFO("Processing remaining twrp.flags\n");
+		//LOGINFO("Processing remaining twrp.flags\n");
 		// Add any items from twrp.flags that did not exist in the recovery.fstab
 		for (std::map<string, Flags_Map>::iterator mapit=twrp_flags.begin(); mapit!=twrp_flags.end(); mapit++) {
 			if (Find_Partition_By_Path(mapit->first) == NULL) {
@@ -260,7 +260,7 @@ int TWPartitionManager::Process_Fstab(string Fstab_Filename, bool Display_Error)
 	if (Get_Super_Status()) {
 		Setup_Super_Devices();
 	}
-	LOGINFO("Done processing fstab files\n");
+	//LOGINFO("Done processing fstab files\n");
 
 	std::vector<TWPartition*>::iterator iter;
 	for (iter = Partitions.begin(); iter != Partitions.end(); iter++) {
@@ -491,7 +491,7 @@ void TWPartitionManager::Setup_Android_Secure_Location(TWPartition* Part) {
 void TWPartitionManager::Output_Partition_Logging(void) {
 	std::vector<TWPartition*>::iterator iter;
 
-	printf("\n\nPartition Logs:\n");
+	printf("\nPartition Logs:\n\n");
 	for (iter = Partitions.begin(); iter != Partitions.end(); iter++)
 		Output_Partition((*iter));
 }
@@ -626,7 +626,8 @@ int TWPartitionManager::Mount_By_Path(string Path, bool Display_Error) {
 	} else if (Display_Error) {
 		gui_msg(Msg(msg::kError, "unable_find_part_path=Unable to find partition for path '{1}'")(Local_Path));
 	} else {
-		LOGINFO("Mount: Unable to find partition for path '%s'\n", Local_Path.c_str());
+       	if (Local_Path != "/etc")
+            LOGINFO("Mount: Unable to find partition for path '%s'\n", Local_Path.c_str());
 	}
 	return false;
 }
@@ -2164,7 +2165,7 @@ void TWPartitionManager::Mount_All_Storage(void) {
 void TWPartitionManager::UnMount_Main_Partitions(void) {
 	// Unmounts system and data if data is not data/media
 	// Also unmounts boot if boot is mountable
-	LOGINFO("Unmounting main partitions...\n");
+	LOGINFO("Unmounting main partitions...");
 
 	TWPartition *Partition = Find_Partition_By_Path ("/vendor");
 
